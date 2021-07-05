@@ -28,7 +28,7 @@ const container: CSSObject = {
 const App = () => {
   const [{ todoList, newBodyOfTodo, editTodo }, dispatch] = useTodoApp();
 
-  // editIdがnumberのときTODO編集用の画面となる。
+  // editTodoがnumberのときTODO編集用の画面となる。
   if (editTodo) {
     return (
       <div css={container}>
