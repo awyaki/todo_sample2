@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { FC, useState, Dispatch } from 'react';
 import { CSSObject } from '@emotion/react';
-import { Action } from '../hooks/todoAppState';
+import { Action } from '../hooks/useTodoApp';
 
 
 const baseContainer: CSSObject = {

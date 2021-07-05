@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { FC, memo, Dispatch } from 'react';
-import { Action } from '../hooks/todoAppState';
+import { Action } from '../hooks/useTodoApp';
 
 import { CSSObject } from '@emotion/react';
 import Todo from './Todo';

@@ -3,7 +3,7 @@
  */
 /** @jsxImportSource @emotion/react */
 import { Dispatch, FC } from 'react';
-import { Action } from '../hooks/todoAppState';
+import { Action } from '../hooks/useTodoApp';
 import { CSSObject } from '@emotion/react';
 
 const container: CSSObject = {
