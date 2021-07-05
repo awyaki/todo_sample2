@@ -2,7 +2,7 @@ import { useReducer } from 'react';
 
 type State = {
   todoList: { id: number, body: string }[];
-  isEdit: number | undefined;
+  editId: number | undefined;
   newBodyOfTodo: string;
 };
 
@@ -40,7 +40,7 @@ const reducer = (
         return { 
           todoList: newTodoList,
           newBodyOfTodo: '',
-          isEdit: undefined,
+          editId: undefined,
         };
       case 'delete':
         {
@@ -49,20 +49,20 @@ const reducer = (
           return {
             todoList: newTodoList,
             newBodyOfTodo: state.newBodyOfTodo,
-            isEdit: undefined,
+            editId: undefined,
           } 
         }
       case 'change':
         return {
           todoList: state.todoList,
           newBodyOfTodo: action.value,
-          isEdit: undefined,
+          editId: undefined,
         };
       case 'edit':
         return {
           todoList: state.todoList,
           newBodyOfTodo: state.newBodyOfTodo,
-          isEdit: action.id, 
+          editId: action.id, 
         }; 
       case 'update':
         {
@@ -72,7 +72,7 @@ const reducer = (
           return {
             todoList: newTodoList,
             newBodyOfTodo: state.newBodyOfTodo,
-            isEdit: undefined,
+            editId: undefined,
           }
         }
       default:
@@ -81,6 +81,6 @@ const reducer = (
 };
 
 export const useTodoApp = () => {
-  const [state, dispatch] = useReducer(reducer, { todoList: [], newBodyOfTodo: '', isEdit: undefined });
+  const [state, dispatch] = useReducer(reducer, { todoList: [], newBodyOfTodo: '', editId: undefined });
   return [state, dispatch] as const;
 };

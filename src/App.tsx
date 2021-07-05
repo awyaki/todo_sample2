@@ -26,10 +26,9 @@ const container: CSSObject = {
 
 
 const App = () => {
-  const [{ todoList, newBodyOfTodo, isEdit }, dispatch] = useTodoApp();
+  const [{ todoList, newBodyOfTodo, editId }, dispatch] = useTodoApp();
 
-  if (isEdit) {
-    const editId = isEdit;
+  if (editId) {
     const todo = todoList.find(({ id }) => id === editId);
     const body = todo ? todo.body : '';
     return (
