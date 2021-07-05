@@ -19,8 +19,8 @@ type Props = {
 const TodoList: FC<Props> = memo(({ todoList, dispatch }) => {
   return (
     <ul css={container}>
-      {todoList.map(({ id, body }) => 
-        <Todo key={id} id={id} body={body} dispatch={dispatch} />
+      {todoList.map((todo) => 
+        <Todo key={todo.id} todo={todo} dispatch={dispatch} />
       )}
     </ul>
   );

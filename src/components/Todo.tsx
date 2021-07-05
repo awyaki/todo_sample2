@@ -26,16 +26,16 @@ const nonCheckedContainer: CSSObject = {
 };
 
 type Props = {
-  id: number;
-  body: string;
+  todo: { id: number, body: string }
   dispatch: Dispatch<Action>
 };
 
-const Todo: FC<Props> = ({ id, body, dispatch }) => {
+const Todo: FC<Props> = ({ todo, dispatch }) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const handleCheck = () => {
     setIsChecked((isChecked) => !isChecked);
   };
+  console.log('todo was rendered');
 
   return (
     <li css={isChecked ? checkedContainer : nonCheckedContainer}>
@@ -43,19 +43,19 @@ const Todo: FC<Props> = ({ id, body, dispatch }) => {
         <button css={{width: '1.2rem'}} 
           onClick={handleCheck}
           >{isChecked ? '●' : '◯' }</button>
-        <p css={{ marginLeft: '12px' }}>{body}</p>
+        <p css={{ marginLeft: '12px' }}>{todo.body}</p>
       </div>
       <div css={{ display: 'flex' }}>
         <button 
           css={{ marginRight: '5px'}}
           onClick={() => dispatch({
             type: 'edit',
-            editTodo: { id: id, body: body },
+            editTodo: todo,
           })}
           >Edit</button>
         <button onClick={() => dispatch({
           type: 'delete',
-          id: id, 
+          id: todo.id, 
         })}>X</button>
       </div>
     </li>
