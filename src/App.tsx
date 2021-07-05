@@ -28,7 +28,7 @@ const container: CSSObject = {
 const App = () => {
   const [{ todoList, inputVal, editTodo }, dispatch] = useTodoApp();
 
-  // editTodoがnumberのときTODO編集用の画面となる。
+  // editTodoがundifinedでないときTODO編集用の画面となる。
   if (editTodo) {
     return (
       <div css={container}>
