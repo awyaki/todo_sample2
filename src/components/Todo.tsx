@@ -50,7 +50,7 @@ const Todo: FC<Props> = ({ id, body, dispatch }) => {
           css={{ marginRight: '5px'}}
           onClick={() => dispatch({
             type: 'edit',
-            id: id,
+            editTodo: { id: id, body: body },
           })}
           >Edit</button>
         <button onClick={() => dispatch({

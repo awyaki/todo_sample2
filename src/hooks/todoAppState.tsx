@@ -2,13 +2,13 @@ import { useReducer } from 'react';
 
 type State = {
   todoList: { id: number, body: string }[];
-  editId: number | undefined;
+  editTodo: {id: number, body: string } | undefined
   newBodyOfTodo: string;
 };
 
 export type Action = {
   type: 'edit';
-  id: number;
+  editTodo: { id: number, body: string };
 }
 | {
   type: 'update';
@@ -40,7 +40,7 @@ const reducer = (
         return { 
           todoList: newTodoList,
           newBodyOfTodo: '',
-          editId: undefined,
+          editTodo: undefined,
         };
       case 'delete':
         {
@@ -49,20 +49,20 @@ const reducer = (
           return {
             todoList: newTodoList,
             newBodyOfTodo: state.newBodyOfTodo,
-            editId: undefined,
+            editTodo: undefined,
           } 
         }
       case 'change':
         return {
           todoList: state.todoList,
           newBodyOfTodo: action.value,
-          editId: undefined,
+          editTodo: undefined,
         };
       case 'edit':
         return {
           todoList: state.todoList,
           newBodyOfTodo: state.newBodyOfTodo,
-          editId: action.id, 
+          editTodo: action.editTodo, 
         }; 
       case 'update':
         {
@@ -72,7 +72,7 @@ const reducer = (
           return {
             todoList: newTodoList,
             newBodyOfTodo: state.newBodyOfTodo,
-            editId: undefined,
+            editTodo: undefined,
           }
         }
       default:
@@ -81,6 +81,6 @@ const reducer = (
 };
 
 export const useTodoApp = () => {
-  const [state, dispatch] = useReducer(reducer, { todoList: [], newBodyOfTodo: '', editId: undefined });
+  const [state, dispatch] = useReducer(reducer, { todoList: [], newBodyOfTodo: '', editTodo: undefined });
   return [state, dispatch] as const;
 };

@@ -4,8 +4,7 @@ import { Action } from '../hooks/todoAppState';
 import { CSSObject } from '@emotion/react';
 
 type Props = {
-  id: number;
-  body: string;
+  editTodo: { id: number, body: string }
   dispatch: Dispatch<Action>; 
 };
 
@@ -14,8 +13,8 @@ const inputStyle: CSSObject = {
   border: '1px solid black',
 };
 
-const Edit: FC<Props> = ({ id, body, dispatch }) => {
-  const [updateValue, setUpdateValue] = useState<string>(body);
+const Edit: FC<Props> = ({ editTodo, dispatch }) => {
+  const [updateValue, setUpdateValue] = useState<string>(editTodo.body);
   const handleUpdateValueChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUpdateValue(e.target.value);
   }; 
@@ -24,7 +23,7 @@ const Edit: FC<Props> = ({ id, body, dispatch }) => {
       e.preventDefault();
       dispatch({
         type: 'update',
-        id: id,
+        id: editTodo.id,
         body: updateValue,
       });
     }}>

@@ -1,3 +1,6 @@
+/**
+ *　新規にTodoを作る機能を持つコンポーネント 
+ */
 /** @jsxImportSource @emotion/react */
 import { Dispatch, FC } from 'react';
 import { Action } from '../hooks/todoAppState';

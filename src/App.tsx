@@ -26,21 +26,20 @@ const container: CSSObject = {
 
 
 const App = () => {
-  const [{ todoList, newBodyOfTodo, editId }, dispatch] = useTodoApp();
+  const [{ todoList, newBodyOfTodo, editTodo }, dispatch] = useTodoApp();
 
-  if (editId) {
-    const todo = todoList.find(({ id }) => id === editId);
-    const body = todo ? todo.body : '';
+  // editIdがnumberのときTODO編集用の画面となる。
+  if (editTodo) {
     return (
       <div css={container}>
         <Edit 
-          id={editId} 
-          body={body}
+          editTodo={editTodo}
           dispatch={dispatch} />
       </div>
     );
   }
 
+  // メイン（TodoList）のUI
   return (
     <div css={container}>
       <TodoList 
