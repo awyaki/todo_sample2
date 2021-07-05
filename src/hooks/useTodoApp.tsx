@@ -36,7 +36,7 @@ const reducer = (
     switch (action.type) {
       case 'add':
         const id = state.todoList.length === 0 ? 1 : Math.max(...state.todoList.map(({ id }) => id)) + 1;
-        const newTodoList = state.todoList.concat({ id: id + 1, body: action.body });
+        const newTodoList = state.todoList.concat({ id: id, body: action.body });
         return { 
           todoList: newTodoList,
           inputVal: '',
