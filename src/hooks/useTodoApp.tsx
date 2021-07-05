@@ -9,23 +9,23 @@ type State = {
 export type Action = {
   type: 'edit';
   editTodo: { id: number, body: string };
-}
-| {
-  type: 'update';
-  todo: { id: number, body: string };
-}
-| {
-  type: 'add';
-  body: string;
-}
-| {
-  type: 'delete';
-  id: number;
-}
-| {
-  type: 'change';
-  value: string;
-};
+  }
+  | {
+    type: 'update';
+    todo: { id: number, body: string };
+  }
+  | {
+    type: 'add';
+    body: string;
+  }
+  | {
+    type: 'delete';
+    id: number;
+  }
+  | {
+    type: 'change';
+    value: string;
+  };
 
 
 const reducer = (
