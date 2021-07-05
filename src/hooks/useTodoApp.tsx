@@ -80,7 +80,5 @@ const reducer = (
     }
 };
 
-export const useTodoApp = () => {
-  const [state, dispatch] = useReducer(reducer, { todoList: [], inputVal: '', editTodo: undefined });
-  return [state, dispatch] as const;
-};
+export const useTodoApp = () => 
+  useReducer(reducer, { todoList: [], inputVal: '', editTodo: undefined });
