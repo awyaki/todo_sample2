@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { FC, useState, Dispatch } from 'react';
+import { FC, useState, Dispatch, memo } from 'react';
 import { CSSObject } from '@emotion/react';
 import { Action } from '../hooks/useTodoApp';
 
@@ -11,7 +11,7 @@ const baseContainer: CSSObject = {
   borderTop: '1px solid black',
   borderLeft: '1px solid black',
   borderRight: '1px solid black',
-  ":nth-last-child(1)": {
+  ":nth-last-of-type(1)": {
     borderBottom: '1px solid black'
   }
 };
@@ -30,12 +30,12 @@ type Props = {
   dispatch: Dispatch<Action>
 };
 
-const Todo: FC<Props> = ({ todo, dispatch }) => {
+const Todo: FC<Props> = memo(({ todo, dispatch }) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const handleCheck = () => {
     setIsChecked((isChecked) => !isChecked);
   };
-  console.log('todo was rendered');
+  console.log(`todo ${todo.id} was rendered`);
 
   return (
     <li css={isChecked ? checkedContainer : nonCheckedContainer}>
@@ -60,6 +60,6 @@ const Todo: FC<Props> = ({ todo, dispatch }) => {
       </div>
     </li>
   );
-};
+});
 
 export default Todo;
