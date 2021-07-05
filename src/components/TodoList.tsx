@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { FC, memo, Dispatch } from 'react';
+import { FC, Dispatch } from 'react';
 import { Action } from '../hooks/useTodoApp';
 
 import { CSSObject } from '@emotion/react';
@@ -16,7 +16,7 @@ type Props = {
   dispatch: Dispatch<Action>
 };
 
-const TodoList: FC<Props> = memo(({ todoList, dispatch }) => {
+const TodoList: FC<Props> = ({ todoList, dispatch }) => {
   return (
     <ul css={container}>
       {todoList.map((todo) => 
@@ -24,6 +24,6 @@ const TodoList: FC<Props> = memo(({ todoList, dispatch }) => {
       )}
     </ul>
   );
-});
+};
 
 export default TodoList;
