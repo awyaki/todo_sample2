@@ -50,7 +50,7 @@ const Todo: FC<Props> = memo(({ todo, dispatch }) => {
           css={{ marginRight: '5px'}}
           onClick={() => dispatch({
             type: 'edit',
-            editTodo: todo,
+            todo: todo,
           })}
           >Edit</button>
         <button onClick={() => dispatch({

@@ -8,7 +8,7 @@ type State = {
 
 export type Action = {
   type: 'edit';
-  editTodo: { id: number, body: string };
+  todo: { id: number, body: string };
   }
   | {
     type: 'update';
@@ -61,7 +61,7 @@ const reducer = (
         return {
           todoList: state.todoList,
           inputVal: state.inputVal,
-          editTodo: action.editTodo, 
+          editTodo: action.todo, 
         }; 
       case 'update':
         {
