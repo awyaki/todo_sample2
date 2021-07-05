@@ -26,7 +26,7 @@ const container: CSSObject = {
 
 
 const App = () => {
-  const [{ todoList, newBodyOfTodo, editTodo }, dispatch] = useTodoApp();
+  const [{ todoList, inputVal, editTodo }, dispatch] = useTodoApp();
 
   // editTodoがnumberのときTODO編集用の画面となる。
   if (editTodo) {
@@ -47,7 +47,7 @@ const App = () => {
         dispatch={dispatch} />
       <CreateTodo 
         dispatch={dispatch}
-        value={newBodyOfTodo} />
+        value={inputVal} />
     </div>
   );
 };

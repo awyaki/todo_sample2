@@ -3,7 +3,7 @@ import { useReducer } from 'react';
 type State = {
   todoList: { id: number, body: string }[];
   editTodo: {id: number, body: string } | undefined
-  newBodyOfTodo: string;
+  inputVal: string;
 };
 
 export type Action = {
@@ -39,7 +39,7 @@ const reducer = (
         const newTodoList = state.todoList.concat({ id: id + 1, body: action.body });
         return { 
           todoList: newTodoList,
-          newBodyOfTodo: '',
+          inputVal: '',
           editTodo: undefined,
         };
       case 'delete':
@@ -48,20 +48,20 @@ const reducer = (
           const newTodoList = state.todoList.slice(0, index).concat(state.todoList.slice(index+1));
           return {
             todoList: newTodoList,
-            newBodyOfTodo: state.newBodyOfTodo,
+            inputVal: state.inputVal,
             editTodo: undefined,
           } 
         }
       case 'change':
         return {
           todoList: state.todoList,
-          newBodyOfTodo: action.value,
+          inputVal: action.value,
           editTodo: undefined,
         };
       case 'edit':
         return {
           todoList: state.todoList,
-          newBodyOfTodo: state.newBodyOfTodo,
+          inputVal: state.inputVal,
           editTodo: action.editTodo, 
         }; 
       case 'update':
@@ -71,7 +71,7 @@ const reducer = (
           newTodoList[index] = { id: action.id , body: action.body };
           return {
             todoList: newTodoList,
-            newBodyOfTodo: state.newBodyOfTodo,
+            inputVal: state.inputVal,
             editTodo: undefined,
           }
         }
@@ -81,6 +81,6 @@ const reducer = (
 };
 
 export const useTodoApp = () => {
-  const [state, dispatch] = useReducer(reducer, { todoList: [], newBodyOfTodo: '', editTodo: undefined });
+  const [state, dispatch] = useReducer(reducer, { todoList: [], inputVal: '', editTodo: undefined });
   return [state, dispatch] as const;
 };
