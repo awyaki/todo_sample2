@@ -12,8 +12,7 @@ export type Action = {
 }
 | {
   type: 'update';
-  id: number;
-  body: string;
+  todo: { id: number, body: string };
 }
 | {
   type: 'add';
@@ -66,9 +65,9 @@ const reducer = (
         }; 
       case 'update':
         {
-          const index = state.todoList.findIndex(({ id }) => id === action.id);
+          const index = state.todoList.findIndex(({ id }) => id === action.todo.id);
           const newTodoList = [...state.todoList];
-          newTodoList[index] = { id: action.id , body: action.body };
+          newTodoList[index] = action.todo;
           return {
             todoList: newTodoList,
             inputVal: state.inputVal,

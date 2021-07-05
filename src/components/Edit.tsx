@@ -23,8 +23,7 @@ const Edit: FC<Props> = ({ editTodo, dispatch }) => {
       e.preventDefault();
       dispatch({
         type: 'update',
-        id: editTodo.id,
-        body: updateValue,
+        todo: { id: editTodo.id, body: updateValue }
       });
     }}>
       <input 
