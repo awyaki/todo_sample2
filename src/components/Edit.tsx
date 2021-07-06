@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { FC, useState, Dispatch, ChangeEvent } from 'react';
+import { FC, useState, Dispatch } from 'react';
 import { Action } from '../hooks/useTodoApp';
 import { CSSObject } from '@emotion/react';
 
@@ -15,9 +15,7 @@ const inputStyle: CSSObject = {
 
 const Edit: FC<Props> = ({ editTodo, dispatch }) => {
   const [updateValue, setUpdateValue] = useState<string>(editTodo.body);
-  const handleUpdateValueChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setUpdateValue(e.target.value);
-  }; 
+
   return (
     <form onSubmit={(e) => {
       e.preventDefault();
@@ -30,7 +28,7 @@ const Edit: FC<Props> = ({ editTodo, dispatch }) => {
         css={inputStyle} 
         type="text" 
         value={updateValue}
-        onChange={handleUpdateValueChange} />
+        onChange={(e) => setUpdateValue(e.target.value)} />
       <button 
         css={{ marginLeft: '12px' }}
         >Update</button>
